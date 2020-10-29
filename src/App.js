@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import StartForm from "./Component/StartForm";
+import GameForm from "./Component/GameForm";
+import FinForm from "./Component/FinForm";
+import {Fin, Game, Start} from "./Constants/Const";
+import Main from "./Component/Main";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            nowForm: Start,
+        }
+    }
+
+    chengeForm = form => {
+        this.setState({nowForm: form})
+    }
+
+
+
+    render() {
+        return (
+            <div class="container">
+                <div className="GameWindow">
+                <Main form={this.state.nowForm} chengeForm = {this.chengeForm}/>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
